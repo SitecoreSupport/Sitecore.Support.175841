@@ -26,7 +26,7 @@ namespace Sitecore.Support.Shell.Controls.RichTextEditor.Pipelines.SaveRichTextC
         if (match.Success)
         {
           string value = match.Value;
-          if (!string.IsNullOrEmpty(value) && value.Contains("_blank") && !this.IsInternalLink(value))
+          if (!string.IsNullOrEmpty(value) && value.Contains("_blank") && !this.IsInternalLink(value) && !value.Contains("rel"))
           {
             string protectedLink = value.Insert(2, " rel=\"noopener noreferrer\" ");
             args.Content = args.Content.Replace(value, protectedLink);
